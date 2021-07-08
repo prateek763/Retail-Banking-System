@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body>
+    <div class="container-fluid px-1 py-5 mx-auto main">
+        <div class="w3-container w3-center w3-animate-left" id="first">
+            <img src="../../assets/images/Add User-amico.svg">
+        </div>
+        <div class="card w3-animate-right">
+            <h5 class="text-center mb-4">Register a Customer</h5>
+            <form #addForm="ngForm" (ngSubmit)="addCustomer(addForm.value)">
+                <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">First name<span class="text-danger"> *</span><span *ngIf="fname.invalid && fname.touched" class="error">
+                        First Name cannot be blank
+                    </span></label> <input type="text" #fname="ngModel" name="fname" placeholder="Enter your first name" ngModel required> </div>
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" placeholder="Enter your last name" ngModel required> </div>
+                </div>
+                <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Date Of Birth<span class="text-danger"> *</span></label> <input type="text" id="dob" name="dob" bsDatepicker placeholder="Date Of Birth" ngModel required /> </div>
+                    <!-- <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone number<span class="text-danger"> *</span><span *ngIf="phone.invalid && phone.touched" class="error">
+                        Number must be of 10 digits and not blank
+                    </span></label> <input type="tel" #phone="ngModel" name="phone" placeholder="Phone Number" ngModel required pattern="[7-9]{1}[0-9]{9}"> </div>-->
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input type="text" id="pass" name="pass" placeholder="Enter the password" ngModel required> </div>
+                </div>
+                <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="text" id="email" name="email" placeholder="Email" ngModel required> </div>
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Address<span class="text-danger"> *</span></label> <input type="text" id="address" name="address" placeholder="Full Address" (ngModel)="customer.address" required> </div>
+                </div>
+                <div class="row justify-content-between text-left">
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Pan Card<span class="text-danger"> *</span></label> <input type="text" id="panNo" name="panNo" placeholder="Pan Number" ngModel required> </div>
+                    <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Account Type<span class="text-danger"> *</span></label> <input type="text" id="type" name="type" placeholder="Account Type" ngModel required> </div>
+                </div>
+                <span class="text-success" [style.display]="success">Customer Created Successfully with Account Number:- {{accNo}}.</span>
+                <span class="text-danger" [style.display]="disp">Customer already Exists</span>
+                <br> Note: All Fields marked with <span class="text-danger">*</span> are required fields.
+                <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Resgister</button> </div>
+
+            </form>
+        </div>
+    </div>
+</body>

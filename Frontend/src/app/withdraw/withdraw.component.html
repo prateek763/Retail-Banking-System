@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand" href="#">
+            <i class="fa fa-bank"></i> The Great Bank
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" routerLink="/landing-page">HOME</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/landing-page">ABOUT US
+                          </a></li>
+                <li class="nav-item"><a class="nav-link" (click)="logout()">LOGOUT</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="functions">
+        <nav class="nav-bar">
+            <div class="nav-items">
+                <a class="links " (click)="onClick('detail')">CUSTOMER DETAILS</a>
+                <a class="links " (click)="onClick('withdraw')">WITHDRAW MONEY</a>
+                <a class="links " (click)="onClick('transfer')">TRANSFER MONEY</a>
+                <a class="links " (click)="onClick('transaction')">TRANSACTION DETAILS</a>
+            </div>
+        </nav>
+    </div>
+    <div class="main-img">
+    </div>
+    <div class="withdraw">
+        <div class="withdraw-box">
+
+            <div class="payment">
+                <div class="payment-logo">
+                    <p>Great Bank</p>
+                </div>
+
+
+                <h2 class="withdraw-h2">Withdraw Money</h2>
+                <div class="form">
+                    <div class="#">
+                        <label class="label">Account Id:</label>
+                        <input type="text" class="input" #id placeholder="Enter Your Account Id">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="#">
+                        <label class="label">Amount:</label>
+                        <input type="text" class="input" #amt data-mask="0000 0000 0000 0000" placeholder="Enter Amount">
+                        <i class="far fa-credit-card"></i>
+                    </div>
+                    <span class="text-danger" [style.display]="error">Minimum balance should be maintained or Account Number is wrong.</span>
+                    <div class="trans-btn">
+                        <button type="button" class="btn btn-primary" (click)="withdraw(id.value,amt.value)">
+                    Withdraw
+                  </button>
+                        <span class="text-success" [style.display]="disp">{{data.messgae}} and balance is {{data.balance | number:'1.1-2'}}.</span>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <!-- Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Transaction Status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                    </div>
+                    <div class="modal-body">
+                        Transaction of Rs.1500 Successfull !! <br> Current Account Balance: Rs.20000
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

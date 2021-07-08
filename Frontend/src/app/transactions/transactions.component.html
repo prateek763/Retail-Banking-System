@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand" href="#">
+            <i class="fa fa-bank"></i> The Great Bank
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" routerLink="/user-login">HOME</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/login">ABOUT US
+                          </a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/landing">LOGOUT</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="functions">
+        <nav class="nav-bar">
+            <div class="nav-items">
+                <a class="links " routerLink="/customer-home/{{auth}}/{{id}}">CUSTOMER DETAILS</a>
+                <a class="links " routerLink="/withdraw/{{auth}}/{{id}}">WITHDRAW MONEY</a>
+                <a class="links " routerLink="/transfer-money/{{auth}}/{{id}}">TRANSFER MONEY</a>
+                <a class="links " routerLink="/transactions/{{auth}}/{{id}}">TRANSACTION DETAILS</a>
+            </div>
+        </nav>
+    </div>
+    <div class="main-img">
+
+
+    </div>
+    <div class="transaction-detail">
+        <h1 class="transactionh1">TRANSACTION DETAILS</h1>
+        <label>Account Number:-</label>
+        <input type="text" class="form-control" #inp aria-describedby="accNo">
+        <button class="btn btn-info" id="s" (click)="onSearch(inp.value)">Search</button>
+        <p class="text-danger" [style.display]='disp'>Enter the correct account number</p>
+        <table style="width:95%">
+            <tr>
+                <th>Date</th>
+                <th>Sender's Account</th>
+                <th>Receiver's Account</th>
+                <th>Type</th>
+                <th>Amount</th>
+            </tr>
+            <tr *ngFor="let item of transactions">
+                <td class="col">{{item.date | date:'dd/MM/yyy'}}</td>
+                <td class="col">{{item.sourceAccountNumber}} </td>
+                <td class="col">{{item.targetAccountNumber}} </td>
+                <td class="col">{{item.reference}} </td>
+                <td class="col">{{item.amount | number:'1.1-2'}} </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</body>

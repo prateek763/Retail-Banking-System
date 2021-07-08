@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<body>
+    <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand" href="#">
+            <i class="fa fa-bank"></i> The Great Bank
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto ">
+                <li class="nav-item"><a class="nav-link" routerLink="/user-login">HOME</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/login">ABOUT US
+                          </a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/landing">LOGOUT</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="functions">
+        <nav class="nav-bar">
+            <div class="nav-items">
+                <a class="links " routerLink="/customer-home/{{auth}}/{{id}}">CUSTOMER DETAILS</a>
+                <a class="links " routerLink="/withdraw/{{auth}}/{{id}}">WITHDRAW MONEY</a>
+                <a class="links " routerLink="/transfer-money/{{auth}}/{{id}} ">TRANSFER MONEY</a>
+                <a class="links " routerLink="/transactions/{{auth}}/{{id}}">TRANSACTION DETAILS</a>
+            </div>
+        </nav>
+    </div>
+    <div class="main-img">
+
+
+    </div>
+    <div class="customer-detail">
+        <h1 class="customerh1">CUSTOMER DETAILS</h1>
+        <button class="getDetails" (click)="searchDetails()">Show Details</button>
+        <p class="personal-detail">PERSONAL DETAILS</p>
+        <table style="width:96%">
+
+            <tr>
+                <th>Customer Id</th>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>DOB</th>
+                <th>PAN</th>
+            </tr>
+            <tr>
+                <td>{{customer.userId}}</td>
+                <td>{{customer.username}}</td>
+                <td>{{customer.email}}</td>
+                <td>{{customer.dateOfBirth}}</td>
+                <td>{{customer.panNumber}}</td>
+            </tr>
+            <tr>
+        </table>
+        <p class="personal-detail">ACCOUNT DETAILS</p>
+        <table style="width:96%" id="acc">
+
+            <tr>
+                <th>Customer Id</th>
+                <th>Customer Name</th>
+                <th>Account Number</th>
+                <th>Balnace</th>
+                <th>Type</th>
+            </tr>
+            <tr *ngFor="let item of accounts">
+                <td>{{item.customerId}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.accountNumber}}</td>
+                <td>Rs. {{item.balance | number:'1.1-2'}}</td>
+                <td>{{item.accountType}}</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
